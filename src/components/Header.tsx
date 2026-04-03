@@ -61,6 +61,16 @@ export const Header = () => {
             >
               <RouterLink to="/about">About</RouterLink>
             </Link>
+            <Link
+              asChild
+              _hover={{ color: "accent.600", textDecoration: "none" }}
+              color="gray.700"
+              _dark={{ color: "gray.200", _hover: { color: "accent.400" } }}
+              fontWeight="medium"
+              transition="color 0.2s"
+            >
+              <RouterLink to="/contact">Contact</RouterLink>
+            </Link>
           </HStack>
         </Flex>
       </Container>
