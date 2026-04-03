@@ -1,0 +1,133 @@
+{
+  "name": "Post",
+  "description": "some different entries",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "slug",
+      "name": "slug",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        },
+        {
+          "regexp": {
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "flags": null
+          }
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "RichText",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "enabledNodeTypes": [
+            "heading-1",
+            "heading-2",
+            "heading-3",
+            "heading-4",
+            "heading-5",
+            "heading-6",
+            "ordered-list",
+            "unordered-list",
+            "hr",
+            "blockquote",
+            "embedded-entry-block",
+            "embedded-asset-block",
+            "hyperlink",
+            "entry-hyperlink",
+            "asset-hyperlink",
+            "embedded-entry-inline"
+          ]
+        },
+        {
+          "enabledMarks": ["bold", "italic", "underline", "code"]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "headImage",
+      "name": "Head Image",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Asset"
+    }
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "dhm6slu4v8tn"
+      }
+    },
+    "id": "post",
+    "type": "ContentType",
+    "createdAt": "2022-02-03T23:09:13.790Z",
+    "updatedAt": "2022-02-03T23:37:06.608Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 15,
+    "publishedAt": "2022-02-03T23:37:06.608Z",
+    "firstPublishedAt": "2022-02-03T23:09:14.123Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4y7ruq4Zm5MU7YQ45OaAZY"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4y7ruq4Zm5MU7YQ45OaAZY"
+      }
+    },
+    "publishedCounter": 8,
+    "version": 16,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4y7ruq4Zm5MU7YQ45OaAZY"
+      }
+    },
+    "urn": "crn:contentful:::content:spaces/dhm6slu4v8tn/environments/master/content_types/post"
+  }
+}
