@@ -1,84 +1,65 @@
-import type { EntrySkeletonType } from "contentful";
+export interface RichTextContent {
+  nodeType: "text";
+  value: string;
+  marks: Array<{ type: string }>;
+  data: Record<string, unknown>;
+}
+
+export interface RichTextBlock {
+  nodeType: string;
+  data: Record<string, unknown>;
+  content: RichTextContent[];
+}
+
+export interface RichTextDocument {
+  nodeType: "document";
+  data: Record<string, unknown>;
+  content: RichTextBlock[];
+}
+
+export interface FileDetails {
+  url: string;
+  details: {
+    size: number;
+    image: {
+      width: number;
+      height: number;
+    };
+  };
+  fileName: string;
+  contentType: string;
+}
+
+export interface AssetFields {
+  title: string;
+  file: FileDetails;
+}
+
+export interface Asset {
+  sys: {
+    id: string;
+    type: "Asset";
+  };
+  fields: AssetFields;
+}
+
+export interface PostFields {
+  title: string;
+  slug?: string;
+  description?: RichTextDocument;
+  headImage?: Asset;
+}
+
+export interface PostSys {
+  id: string;
+  type: "Entry";
+  createdAt: string;
+  updatedAt: string;
+  publishedVersion?: number;
+  locale: string;
+}
 
 export interface Post {
-  metadata: {
-    tags: string[];
-    concepts: string[];
-  };
-  sys: {
-    space: {
-      sys: {
-        type: string;
-        linkType: string;
-        id: string;
-      };
-    };
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    environment: {
-      sys: {
-        id: string;
-        type: string;
-        linkType: string;
-      };
-    };
-    publishedVersion: number;
-    revision: number;
-    contentType: {
-      sys: {
-        type: string;
-        linkType: string;
-        id: string;
-      };
-    };
-    locale: string;
-  };
-  fields: {
-    title: string;
-    slug: string;
-    description: {
-      nodeType: string;
-      data: Record<string, unknown>;
-      content: {
-        nodeType: string;
-        data: Record<string, unknown>;
-        content: {
-          nodeType: string;
-          value: string;
-          marks: unknown[];
-          data: Record<string, unknown>;
-        }[];
-      }[];
-    };
-  };
+  sys: PostSys;
+  fields: PostFields;
 }
-
-/*
-{
-    "fields": {
-        "title": "Acerca",
-        "slug": "acerca",
-        "description": {
-            "nodeType": "document",
-            "data": {},
-            "content": [
-                {
-                    "nodeType": "paragraph",
-                    "data": {},
-                    "content": [
-                        {
-                            "nodeType": "text",
-                            "value": "hey, this is me",
-                            "marks": [],
-                            "data": {}
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
-
-*/

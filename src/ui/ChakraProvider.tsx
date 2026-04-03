@@ -1,20 +1,8 @@
-import {
-  ChakraProvider,
-  createSystem,
-  defaultConfig,
-  defineConfig,
-} from "@chakra-ui/react";
-
-const config = defineConfig({
-  theme: {
-    tokens: {
-      colors: {},
-    },
-  },
-});
+import { ChakraProvider, createSystem, defaultConfig } from "@chakra-ui/react";
+import { config } from "@/theme";
 
 const system = createSystem(defaultConfig, config);
 
-export default function App({ children }: { children: React.ReactNode }) {
+export default function Provider({ children }: { children: React.ReactNode }) {
   return <ChakraProvider value={system}>{children}</ChakraProvider>;
 }
