@@ -5,7 +5,7 @@ import { Header } from "@/components";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/portfolio/">
       <Flex
         direction="column"
         minHeight="100vh"
