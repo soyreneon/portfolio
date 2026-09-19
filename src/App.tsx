@@ -6,12 +6,7 @@ import { Header } from "@/components";
 const App = () => {
   return (
     <Router basename="/portfolio/">
-      <Flex
-        direction="column"
-        minHeight="100vh"
-        bg="white"
-        _dark={{ bg: "dark.800" }}
-      >
+      <Flex direction="column" bg="white" _dark={{ bg: "dark.800" }}>
         <Header />
         <Box as="main" flex={1}>
           <Routes>
