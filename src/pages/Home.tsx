@@ -47,11 +47,11 @@ export const Home = () => {
               px={{ base: 4, md: 0 }}
               textAlign="justify"
             >
-              Rene has 10 years of experience as a front-end developer working
-              with technologies such as React, React native, Jquery, CSS, HTML,
-              and vanillaJS. He has been part of development teams using agile
-              methodologies and many tools for diverse projects. Responsible,
-              fast learner and collaborative.
+              Hi, I'm a software engineer with 10 years of experience as a
+              front-end developer working with technologies such as React, React
+              native, Jquery, CSS, HTML, and vanillaJS. I have been part of
+              development teams using agile methodologies and many tools for
+              diverse projects. Responsible, fast learner and collaborative.
             </Text>
             <HStack gap={4} mt={8} justify="end" flexWrap="wrap">
               <IconButton

@@ -1,6 +1,15 @@
 import { Box, Heading, Stack, Text, Link, Image } from "@chakra-ui/react";
+import type { Block, Inline, Text as RichTextText } from "@contentful/rich-text-types";
 import { Link as RouterLink } from "react-router";
 import type { Post } from "@/types";
+
+const getTextContent = (node: Block | Inline | RichTextText): string => {
+  if ("value" in node) {
+    return node.value;
+  }
+
+  return node.content.map(getTextContent).join("");
+};
 
 interface PostCardProps {
   post: Post;
@@ -8,6 +17,9 @@ interface PostCardProps {
 
 export const PostCard = ({ post }: PostCardProps) => {
   const { title, description, headImage } = post.fields;
+  const preview = description?.content[0]
+    ? getTextContent(description.content[0])
+    : "";
   const imageUrl = headImage?.fields?.file?.url
     ? `https:${headImage.fields.file.url}`
     : undefined;
@@ -41,13 +53,13 @@ export const PostCard = ({ post }: PostCardProps) => {
             <Heading as="h3" size="md" color="primary.600">
               {title}
             </Heading>
-            {description && description.content?.[0]?.content?.[0]?.value && (
+            {preview && (
               <Text
                 color="gray.600"
                 _dark={{ color: "gray.300" }}
                 lineClamp={2}
               >
-                {description.content[0].content[0].value}
+                {preview}
               </Text>
             )}
             <Text fontSize="sm" color="accent.600" fontWeight="medium">

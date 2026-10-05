@@ -33,11 +33,12 @@ export function ContactForm() {
           maxW="sm"
           px={4}
           py={6}
-          background={"accent.50"}
+          shadow="2xl"
+          // background={"accent.50"}
           _dark={{ background: "accent.900" }}
         >
           <Card.Header>
-            <Card.Title>Sign up</Card.Title>
+            <Card.Title>Let's message</Card.Title>
             <Card.Description>
               Fill in the form below to get in touch
             </Card.Description>
@@ -51,6 +52,7 @@ export function ContactForm() {
                   placeholder="name"
                   required
                   mb={3}
+                  px={2}
                 />
                 <Input
                   type="email"
@@ -58,8 +60,16 @@ export function ContactForm() {
                   placeholder="email"
                   required
                   mb={3}
+                  px={2}
                 />
-                <Textarea name="message" required rows={8} mb={3} />
+                <Textarea
+                  name="message"
+                  placeholder="message"
+                  required
+                  rows={8}
+                  mb={3}
+                  p={2}
+                />
                 <Button
                   type="submit"
                   variant="solid"

@@ -1,21 +1,6 @@
-export interface RichTextContent {
-  nodeType: "text";
-  value: string;
-  marks: Array<{ type: string }>;
-  data: Record<string, unknown>;
-}
+import type { Document } from "@contentful/rich-text-types";
 
-export interface RichTextBlock {
-  nodeType: string;
-  data: Record<string, unknown>;
-  content: RichTextContent[];
-}
-
-export interface RichTextDocument {
-  nodeType: "document";
-  data: Record<string, unknown>;
-  content: RichTextBlock[];
-}
+export type RichTextDocument = Document;
 
 export interface FileDetails {
   url: string;
@@ -49,6 +34,16 @@ export interface PostFields {
   description?: RichTextDocument;
   headImage?: Asset;
 }
+export interface WorkFields {
+  title: string;
+  slug?: string;
+  init?: string;
+  end?: string;
+  role?: string;
+  mainCompany?: string;
+  projectUrl?: string;
+  description?: RichTextDocument;
+}
 
 export interface PostSys {
   id: string;
@@ -62,4 +57,8 @@ export interface PostSys {
 export interface Post {
   sys: PostSys;
   fields: PostFields;
+}
+export interface Work {
+  sys: PostSys;
+  fields: WorkFields;
 }

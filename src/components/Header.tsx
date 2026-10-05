@@ -51,7 +51,7 @@ export const Header = () => {
               >
                 <RouterLink to="/">Home</RouterLink>
               </Link>
-              <Link
+              {/* <Link
                 asChild
                 _hover={{ color: "accent.600", textDecoration: "none" }}
                 color="gray.700"
@@ -60,6 +60,16 @@ export const Header = () => {
                 transition="color 0.2s"
               >
                 <RouterLink to="/blog">Blog</RouterLink>
+              </Link> */}
+              <Link
+                asChild
+                _hover={{ color: "accent.600", textDecoration: "none" }}
+                color="gray.700"
+                _dark={{ color: "gray.200", _hover: { color: "accent.400" } }}
+                fontWeight="medium"
+                transition="color 0.2s"
+              >
+                <RouterLink to="/work">Work</RouterLink>
               </Link>
               <Link
                 asChild

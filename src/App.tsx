@@ -1,6 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { Box, Flex } from "@chakra-ui/react";
-import { Home, Blog, PostDetail, About, ContactForm } from "@/pages";
+import {
+  Home,
+  // Blog,
+  // PostDetail,
+  WorkDetail,
+  About,
+  ContactForm,
+  Work,
+} from "@/pages";
 import { Header } from "@/components";
 
 const App = () => {
@@ -11,8 +19,10 @@ const App = () => {
         <Box as="main" flex={1}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/post/:id" element={<PostDetail />} />
+            {/* <Route path="/blog" element={<Blog />} /> */}
+            {/* <Route path="/post/:id" element={<PostDetail />} /> */}
+            <Route path="/work" element={<Work />} />
+            <Route path="/work/:id" element={<WorkDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<ContactForm />} />
           </Routes>
