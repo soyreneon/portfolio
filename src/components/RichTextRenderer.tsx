@@ -1,11 +1,4 @@
-import {
-  Box,
-  Code,
-  Heading,
-  Image,
-  Link,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Code, Heading, Image, Link, Text } from "@chakra-ui/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import type { Block, Inline } from "@contentful/rich-text-types";
@@ -95,7 +88,7 @@ export const RichTextRenderer = ({ document }: RichTextRendererProps) => {
             </Heading>
           ),
           [BLOCKS.UL_LIST]: (_node, children) => (
-            <Box as="ul" pl={6} mb={4} listStyleType="disc">
+            <Box as="ul" pl={8} mb={4} listStyleType="disc">
               {children}
             </Box>
           ),
@@ -139,8 +132,13 @@ export const RichTextRenderer = ({ document }: RichTextRendererProps) => {
           [BLOCKS.EMBEDDED_ENTRY]: () => null,
           [INLINES.HYPERLINK]: (node, children) => {
             const uri = node.data.uri;
-            const scheme = uri.match(/^([a-z][a-z\d+.-]*):/i)?.[1].toLowerCase();
-            if (scheme && !["http", "https", "mailto", "tel"].includes(scheme)) {
+            const scheme = uri
+              .match(/^([a-z][a-z\d+.-]*):/i)?.[1]
+              .toLowerCase();
+            if (
+              scheme &&
+              !["http", "https", "mailto", "tel"].includes(scheme)
+            ) {
               return <>{children}</>;
             }
 
@@ -173,9 +171,7 @@ export const RichTextRenderer = ({ document }: RichTextRendererProps) => {
           [MARKS.CODE]: (text) => <Code>{text}</Code>,
           [MARKS.SUPERSCRIPT]: (text) => <Text as="sup">{text}</Text>,
           [MARKS.SUBSCRIPT]: (text) => <Text as="sub">{text}</Text>,
-          [MARKS.STRIKETHROUGH]: (text) => (
-            <Text as="del">{text}</Text>
-          ),
+          [MARKS.STRIKETHROUGH]: (text) => <Text as="del">{text}</Text>,
         },
       })}
     </Box>

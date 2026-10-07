@@ -1,4 +1,15 @@
-import { Box, Container, Heading, Stack, Text, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Heading,
+  Link,
+  Mark,
+  Stack,
+  Tag,
+  Text,
+  Button,
+} from "@chakra-ui/react";
+import { FaRegBuilding, FaExternalLinkAlt, FaUserTie } from "react-icons/fa";
 import { useParams, Link as RouterLink } from "react-router";
 import { useEffect, useState } from "react";
 import client from "@/config/contentful";
@@ -93,55 +104,49 @@ export const WorkDetail = () => {
 
               <Text
                 fontSize={{ base: "xs", md: "sm" }}
-                color="gray.500"
+                color="gray.600"
                 _dark={{ color: "gray.400" }}
                 px={{ base: 4, md: 0 }}
               >
-                {startDate
-                  ? `${startDate.getMonth() + 1}/${startDate.getFullYear()}`
-                  : ""}
-                {endDate
-                  ? ` - ${endDate.getMonth() + 1}/${endDate.getFullYear()}`
-                  : ""}
+                <Mark variant="subtle">
+                  {startDate
+                    ? `${startDate.getMonth() + 1}/${startDate.getFullYear()}`
+                    : ""}
+                  {endDate
+                    ? ` - ${endDate.getMonth() + 1}/${endDate.getFullYear()}`
+                    : ""}
+                </Mark>
               </Text>
-              {mainCompany && (
-                <Text
-                  color="gray.600"
-                  textStyle="sm"
-                  _dark={{ color: "gray.300" }}
-                  lineClamp={5}
-                  px={10}
-                >
-                  Company: {mainCompany}
-                </Text>
-              )}
-
-              <Text
-                color="gray.600"
-                textStyle="sm"
-                _dark={{ color: "gray.300" }}
-                lineClamp={5}
-                px={10}
-              >
-                {role}
-              </Text>
-              <Text
-                color="gray.600"
-                textStyle="sm"
-                _dark={{ color: "gray.300" }}
-                lineClamp={5}
-                px={10}
-              >
-                {projectUrl && (
-                  <a
-                    href={projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Project URL: {projectUrl}
-                  </a>
+              <Stack px={10} align="start" direction={"row"} gap={4}>
+                {role && (
+                  <Tag.Root variant="surface" colorPalette="green">
+                    <FaUserTie />
+                    <Tag.Label> {role}</Tag.Label>
+                  </Tag.Root>
                 )}
-              </Text>
+                {mainCompany && (
+                  <Tag.Root variant="surface" colorPalette="blue">
+                    <FaRegBuilding />
+                    <Tag.Label> Contracted via {mainCompany}</Tag.Label>
+                    {/* External Consultant through {mainCompany} */}
+                  </Tag.Root>
+                )}
+              </Stack>
+
+              {projectUrl && (
+                <Link
+                  px={10}
+                  href={projectUrl}
+                  _hover={{ color: "accent.600", textDecoration: "none" }}
+                  color="gray.700"
+                  _dark={{ color: "gray.200", _hover: { color: "accent.400" } }}
+                  // fontWeight="medium"
+                  fontSize="sm"
+                  transition="color 0.2s"
+                >
+                  Project: {projectUrl} <FaExternalLinkAlt />
+                </Link>
+              )}
             </Stack>
 
             {description && (
